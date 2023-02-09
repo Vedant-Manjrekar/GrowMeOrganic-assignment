@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Button, Grid, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,17 +55,25 @@ function Form() {
           severity="warning"
           sx={{
             position: 'absolute',
-            top: '3vh',
-            width: '40vw',
+            top: '5vh',
+            width: '80vw',
             margin: 'auto',
             left: '0',
             right: '0',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
           action={
             <Button
               color="inherit"
               onClick={() => setAlert(false)}
               size="small"
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
             >
               X
             </Button>
@@ -77,7 +85,7 @@ function Form() {
         ''
       )}
       <Grid container spacing={1} columns={2} rowGap={5}>
-        <Grid item md={2}>
+        <Grid item xs={2} sm={2} md={2}>
           <TextField
             id="standard-basic"
             onChange={(e) => setName(e.target.value)}
@@ -87,7 +95,7 @@ function Form() {
             style={{ textIndent: '12px' }}
           />
         </Grid>
-        <Grid item md={1}>
+        <Grid item xs={1} sm={1} md={1}>
           <TextField
             onChange={(e) => setNumber(e.target.value)}
             type="number"
@@ -98,7 +106,7 @@ function Form() {
           />
         </Grid>
 
-        <Grid item md={1}>
+        <Grid item xs={1} sm={1} md={1}>
           <TextField
             type="email"
             onChange={(e) => setEmail(e.target.value)}
@@ -109,7 +117,7 @@ function Form() {
           />
         </Grid>
 
-        <Grid item md={2}>
+        <Grid item xs={2} sm={2} md={2}>
           <Button
             color="success"
             fullWidth
