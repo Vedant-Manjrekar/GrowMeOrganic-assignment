@@ -10,14 +10,13 @@ function SecondPage() {
   useEffect(() => {
     console.log(JSON.parse(localStorage.getItem('data')!));
 
-    fetch('http://universities.hipolabs.com/search?country=United+States', {
-      mode: 'cors',
-    })
+    fetch('https://animechan.vercel.app/api/quotes/character?name=madara', {})
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setData(data);
+        console.log(data);
       });
 
     // cleanup function
@@ -27,39 +26,32 @@ function SecondPage() {
   // Interface to model data for rows.
   interface UserData {
     id: number;
-    name: String;
-    alpha_two_code: String;
-    web_pages: String;
-    domains: String;
+    anime: String;
+    character: String;
+    quote: String;
   }
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-      field: 'name',
-      headerName: 'University name',
-      width: 300,
-      editable: true,
-      align: 'left',
-    },
-    {
-      field: 'code',
-      headerName: 'Alpha-2 code',
+      field: 'character',
+      headerName: 'Character',
       width: 150,
       editable: true,
       align: 'left',
     },
     {
-      field: 'web_pages',
-      headerName: 'Website',
-      width: 200,
+      field: 'anime',
+      headerName: 'Anime',
+      width: 300,
+      editable: true,
       align: 'left',
     },
     {
-      field: 'domains',
-      headerName: 'Domain name',
-      width: 200,
-      editable: true,
+      field: 'quote',
+      headerName: 'Quote',
+      width: 800,
+      align: 'left',
     },
   ];
 
@@ -70,10 +62,9 @@ function SecondPage() {
   data?.map((element: UserData, index) => {
     rows.push({
       id: index,
-      name: element?.name,
-      code: element?.alpha_two_code,
-      domains: element?.domains[0],
-      web_pages: element?.web_pages[0],
+      anime: element?.anime,
+      character: element?.character,
+      quote: element?.quote,
     });
   });
 
