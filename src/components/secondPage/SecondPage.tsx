@@ -10,7 +10,9 @@ function SecondPage() {
   useEffect(() => {
     console.log(JSON.parse(localStorage.getItem('data')!));
 
-    fetch('http://universities.hipolabs.com/search?country=United+States')
+    fetch('http://universities.hipolabs.com/search?country=United+States', {
+      mode: 'cors',
+    })
       .then((res) => {
         return res.json();
       })
