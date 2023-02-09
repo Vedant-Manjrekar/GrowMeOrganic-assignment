@@ -17,8 +17,8 @@ function Form() {
       name.length < 3 ||
       '' ||
       number === undefined ||
-      number.length < 10 ||
       '' ||
+      number.length < 10 ||
       email === undefined ||
       email.length < 4 ||
       ''
@@ -28,7 +28,7 @@ function Form() {
     }
 
     // if all inputs are filled.
-    if (name && email && number !== undefined) {
+    if (name && email && number) {
       setIsIncomplete(false);
       setAlert(false);
     }
@@ -39,6 +39,8 @@ function Form() {
       email: email,
       number: number,
     };
+
+    console.log(data);
 
     localStorage.setItem('data', JSON.stringify(data));
   }
